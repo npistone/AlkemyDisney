@@ -1,20 +1,11 @@
 package com.alkemy.disney.dto;
 
-import com.alkemy.disney.entidades.Genero;
-import com.alkemy.disney.entidades.Personaje;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 public class PeliculaDtoBasic {
 
     private Long id;
     private String imagen;
     private String titulo;
-    private LocalDate fechaCreacion;
+    private String fechaCreacion;
 
     public Long getId() {
         return id;
@@ -40,11 +31,11 @@ public class PeliculaDtoBasic {
         this.titulo = titulo;
     }
 
-    public LocalDate getFechaCreacion() {
+    public String getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
+    public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 }

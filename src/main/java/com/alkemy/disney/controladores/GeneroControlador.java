@@ -3,15 +3,15 @@ package com.alkemy.disney.controladores;
 
 import com.alkemy.disney.dto.GeneroDTO;
 import com.alkemy.disney.servicio.GeneroServicio;
-import com.alkemy.disney.servicio.implementacion.GeneroServicioImp;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("generos")
+@RequestMapping("genero")
 public class GeneroControlador {
 
     /*Llamamos directamente a la interface*/

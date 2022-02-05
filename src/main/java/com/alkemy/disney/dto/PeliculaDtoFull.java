@@ -1,11 +1,5 @@
 package com.alkemy.disney.dto;
 
-import com.alkemy.disney.entidades.Genero;
-import com.alkemy.disney.entidades.Personaje;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +8,12 @@ public class PeliculaDtoFull {
     private Long id;
     private String imagen;
     private String titulo;
-    private LocalDate fechaCreacion;
+    private String fechaCreacion;
     private Integer calificacion;
-    private List<Personaje> personajes = new ArrayList<>();
-    private boolean deleted = Boolean.FALSE;
-    private Genero genero;
+    private List<PersonajeDtoFull> personajes = new ArrayList<>();
+    private Long genero;
+
+
 
     public Long getId() {
         return id;
@@ -44,11 +39,11 @@ public class PeliculaDtoFull {
         this.titulo = titulo;
     }
 
-    public LocalDate getFechaCreacion() {
+    public String getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
+    public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -60,27 +55,23 @@ public class PeliculaDtoFull {
         this.calificacion = calificacion;
     }
 
-    public List<Personaje> getPersonajes() {
+    public List<PersonajeDtoFull> getPersonajes() {
         return personajes;
     }
 
-    public void setPersonajes(List<Personaje> personajes) {
+    public void setPersonajes(List<PersonajeDtoFull> personajes) {
         this.personajes = personajes;
     }
 
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
-
-    public Genero getGenero() {
+    public Long getGenero() {
         return genero;
     }
 
-    public void setGenero(Genero genero) {
+    public void setGenero(Long genero) {
         this.genero = genero;
     }
+
+
+
+
 }

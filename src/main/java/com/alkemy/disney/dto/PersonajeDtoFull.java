@@ -21,7 +21,7 @@ public class PersonajeDtoFull {
 
     private String historia;
 
-    private List<Pelicula> peliculas = new ArrayList<>();
+    private List<PeliculaDtoFull> peliculas = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -71,11 +71,11 @@ public class PersonajeDtoFull {
         this.historia = historia;
     }
 
-    public List<Pelicula> getPeliculas() {
+    public List<PeliculaDtoFull> getPeliculas() {
         return peliculas;
     }
 
-    public void setPeliculas(List<Pelicula> peliculas) {
+    public void setPeliculas(List<PeliculaDtoFull> peliculas) {
         this.peliculas = peliculas;
     }
 }

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
@@ -27,6 +28,7 @@ public class Pelicula {
     @DateTimeFormat(pattern ="yyyy/MM/dd")
     private LocalDate fechaCreacion;
 
+
     private Integer calificacion;
 
 
@@ -43,14 +45,50 @@ public class Pelicula {
             inverseJoinColumns = @JoinColumn(name ="personaje_id"))
     private List<Personaje> personajes = new ArrayList<>();
 
-    private boolean deleted = Boolean.FALSE;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade ={
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade ={
             CascadeType.PERSIST,
             CascadeType.MERGE } )
     @JoinColumn(name = "genero_id", insertable = false, updatable = false )
     private Genero genero;
 
+
+    @Column(name ="genero_id", nullable = false)
+    private Long generoId;
+
+    private boolean deleted = Boolean.FALSE;
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o ==null)return false;
+        if (getClass() != o.getClass()) return false;
+        if (!(o instanceof Pelicula)) return false;
+        final Pelicula pelicula = (Pelicula) o;
+        return pelicula.id==this.id;
+       }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getImagen(), getTitulo());
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public Long getGeneroId() {
+        return generoId;
+    }
+
+    public void setGeneroId(Long generoId) {
+        this.generoId = generoId;
+    }
 
     public Long getId() {
         return id;
@@ -106,5 +144,13 @@ public class Pelicula {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+
+    public void agregarPje(Personaje pje){
+        this.personajes.add(pje);
+    }
+    public void quitarPje(Personaje pje){
+        this.personajes.remove(pje);
     }
 }

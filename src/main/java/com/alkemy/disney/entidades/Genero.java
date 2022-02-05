@@ -21,14 +21,12 @@ public class Genero {
 
     private String nombre;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = false)
+    @OneToMany(mappedBy="genero", cascade = CascadeType.PERSIST)
     private List<Pelicula> peliculas = new ArrayList<>();
 
     private boolean deleted = Boolean.FALSE;
 
-    public boolean isDeleted() {
-        return deleted;
-    }
+
 
     public Long getId() {
         return id;
@@ -59,6 +57,10 @@ public class Genero {
 
     public void setPeliculas(List<Pelicula> peliculas) {
         this.peliculas = peliculas;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
     }
 
 
